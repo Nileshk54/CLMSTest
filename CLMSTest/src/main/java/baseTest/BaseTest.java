@@ -4,6 +4,7 @@ import java.io.FileInputStream;
 import java.time.Duration;
 import java.util.Properties;
 
+import org.apache.logging.log4j.LogManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.AfterTest;
@@ -15,15 +16,18 @@ public class BaseTest {
 
 	private static Properties prop;
 	private static String url;
-	protected WebDriver driver;
+	protected static WebDriver driver;
 	protected String username;
 	protected String password;
+	private org.apache.logging.log4j.Logger log;
 	
 	@BeforeTest
 	public void launchApplication() {
+		log=LogManager.getLogger(BaseTest.class);
 		try {
 			prop=new Properties();
-			FileInputStream fis=new FileInputStream("D:\\Git\\CLMSTest\\CLMSTest\\src\\test\\resources\\config.properties");
+			
+			FileInputStream fis=new FileInputStream("D:\\Git\\CLMSTest\\CLMSTest\\src\\main\\resources\\config.properties");
 			prop.load(fis);
 			url=prop.getProperty("URL");
 			
@@ -39,13 +43,14 @@ public class BaseTest {
 		WebDriverManager.chromedriver().setup();
 		driver=new ChromeDriver();
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
-	
+		
 		driver.get(url);
+		log.debug("Opening Browser with " + url);
 		driver.manage().window().maximize();
 	}
 	
-	@AfterTest
-	public void tearDown() {
-		driver.quit();
-	}
+//	@AfterTest
+//	public void tearDown() {
+//		driver.quit();
+//	}
 }
