@@ -43,7 +43,19 @@ public class AdminUserMaster {
 	}
 	
 	public void getAllVendors() {
-		applyUserFilter("Vendor");
+		String type="Vendor";
+		applyUserFilter(type);
+		getUserNamesAndDeatils();
+	}
+
+	public void getAllPurchase() {
+		String type="Purchase";
+		applyUserFilter(type);
+		getUserNamesAndDeatils();
+		
+	}
+	
+	public void getUserNamesAndDeatils() {
 		List<WebElement> userNames=driver.findElements(getUserNameElement);
 		int totalEntries=GetTotalEntries.getTotalEntries();
 		log.debug("Total " + totalEntries +" vendor user found");

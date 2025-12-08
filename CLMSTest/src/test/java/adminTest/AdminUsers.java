@@ -16,4 +16,11 @@ public class AdminUsers extends BaseTest{
 		adminUser.getAllVendors();
 	}
 	
+	@Test
+	public void getAllPurchase() {
+		LoginPage lp=new LoginPage(driver);
+		lp.validLogin(username,password);
+		AdminUserMaster adminUser=new AdminUserMaster(driver);
+		adminUser.getAllPurchase();
+	}
 }

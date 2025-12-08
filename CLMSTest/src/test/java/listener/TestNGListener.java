@@ -19,17 +19,17 @@ public class TestNGListener extends BaseTest implements ITestListener {
 	private org.apache.logging.log4j.Logger log = LogManager.getLogger(TestNGListener.class);
 
 	public void onTestStart(ITestResult result) {
-		log.debug(" ******** " + result.getName() + " Started " + " ******** ");
+		log.debug(" ******** " + result.getName() + " Listener Started " + " ******** ");
 	}
 
 	public void onTestSuccess(ITestResult result) {
 		// TODO Auto-generated method stub
-		log.debug(" ******** " + result.getName() + " Success " + " ******** ");
+		log.debug(" ******** " + result.getName() + " Listener Success " + " ******** ");
 	}
 
 	public void onTestFailure(ITestResult result) {
 		// TODO Auto-generated method stub
-		log.debug(" ******** " + result.getName() + " Failed " + " ******** ");
+		log.debug(" ******** " + result.getName() + " Listener Failed " + " ******** ");
 		String timeStamp = new SimpleDateFormat("ddMMyyyy_HHmm").format(new Date());
 		String filePath = "D:\\Git\\CLMSTest\\CLMSTest\\ScreenShots\\" + result.getName() + "_" + timeStamp +".png";
 		System.out.println(filePath);
@@ -45,7 +45,7 @@ public class TestNGListener extends BaseTest implements ITestListener {
 
 	public void onTestSkipped(ITestResult result) {
 		// TODO Auto-generated method stub
-		log.debug(" ******** " + result.getName() + " Skipped " + " ******** ");
+		log.debug(" ******** " + result.getName() + " Listener Skipped " + " ******** ");
 	}
 
 }

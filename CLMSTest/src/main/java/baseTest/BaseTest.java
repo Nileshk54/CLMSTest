@@ -7,7 +7,9 @@ import java.util.Properties;
 import org.apache.logging.log4j.LogManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.AfterTest;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeTest;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
@@ -21,7 +23,7 @@ public class BaseTest {
 	protected String password;
 	private org.apache.logging.log4j.Logger log;
 	
-	@BeforeTest
+	@BeforeMethod
 	public void launchApplication() {
 		log=LogManager.getLogger(BaseTest.class);
 		try {
@@ -49,8 +51,8 @@ public class BaseTest {
 		driver.manage().window().maximize();
 	}
 	
-//	@AfterTest
-//	public void tearDown() {
-//		driver.quit();
-//	}
+	@AfterMethod
+	public void tearDown() {
+		driver.quit();
+	}
 }
