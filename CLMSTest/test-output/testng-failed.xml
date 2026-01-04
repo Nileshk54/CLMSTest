@@ -3,13 +3,11 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="adminTest.AdminUsers">
+      <class name="utils.ExcelDataProvider">
         <methods>
-          <include name="getAllVendors"/>
-          <include name="launchApplication"/>
-          <include name="tearDown"/>
+          <include name="getExcelData"/>
         </methods>
-      </class> <!-- adminTest.AdminUsers -->
+      </class> <!-- utils.ExcelDataProvider -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->
